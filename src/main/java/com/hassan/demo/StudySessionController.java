@@ -11,6 +11,7 @@ public class StudySessionController {
     @Autowired
     private StudySessionService studySessionService;
     @PostMapping
+    // Creates a new study session and persists it to the database
     public StudySession createSession(@RequestBody StudySession session) {
         return studySessionService.createSession(session);
     }
