@@ -1,0 +1,45 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+### Create a study session
+POST http://localhost:8080/sessions
+Content-Type: application/json
+
+{
+  "topic": "Spring Boot Day 3",
+  "track": "Internship Prep",
+  "durationMinutes": 180,
+  "date": "2026-08-18",
+  "wasUninterrupted": true,
+  "notes": "Built full CRUD API with DI and H2"
+}
+### Get all sessions
+GET http://localhost:8080/sessions
+
+###
+
+### Get session by id
+GET http://localhost:8080/sessions/1
+
+###
+
+### Update session 1
+PUT http://localhost:8080/sessions/2
+Content-Type: application/json
+
+{
+  "topic": "Spring Boot Day 3 - Updated",
+  "track": "Internship Prep",
+  "durationMinutes": 200,
+  "date": "2026-08-18",
+  "wasUninterrupted": false,
+  "notes": "Extended session, got interrupted once"
+}
+
+###
+
+### Delete session 1
+DELETE http://localhost:8080/sessions/2
+
+###
+###
