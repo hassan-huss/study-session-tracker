@@ -1,5 +1,6 @@
 package com.hassan.demo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,9 +22,13 @@ public class StudySessionController {
         return studySessionService.getAllSessions();
     }
     @GetMapping("/{id}")
-    // Retrieves a single study session by its id, or null if not found
-    public StudySession getSessionById(@PathVariable Long id) {
-        return studySessionService.getSessionById(id);
+// Retrieves a single study session by its id, or 404 if not found
+    public ResponseEntity<StudySession> getSessionById(@PathVariable Long id) {
+        StudySession session = studySessionService.getSessionById(id);
+        if (session == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(session);
     }
     @PutMapping("/{id}")
     // Updates an existing study session with new values and persists the change
